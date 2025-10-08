@@ -1,908 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfolio - Natha Widya Putra Nugraha</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-</head>
-<style>
-html {
-      scroll-behavior: smooth;
-    }
-    
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: radial-gradient(circle, #4ac298 0%, #3b5e4b 50%, #424644 100%);
-                
-      min-height: 100vh;
-    }
-
-    body::before {  
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-size: 100px 100px, 150px 150px, 120px 120px;
-      pointer-events: none;
-    }
-
-    /* Navbar*/
-    .navbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      backdrop-filter: blur(20px);
-      padding: 15px 0;
-      z-index: 1000;
-      background: transparent;
-    }
-
-    .nav-container {
-      max-width: 1400px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between; 
-      align-items: center;
-      padding: 0 20px;
-    }
-
-    .text h3 {
-      text-decoration: none;
-      color: #ffffff;
-      font-weight: 500;
-      font-size: clamp(1rem, 2.5vw, 1.2rem);
-      transition: all 0.3s ease;
-      letter-spacing: 0.5px;
-      margin: 0;
-    }
-
-    .nav-links {
-      display: flex;
-      list-style: none;
-      gap: clamp(15px, 3vw, 35px);
-    }
-
-    .nav-links a {
-      text-decoration: none;
-      color: #ffffff;
-      font-weight: 500;
-      font-size: clamp(0.8rem, 1.5vw, 0.9rem);
-      transition: all 0.3s ease;
-      position: relative;
-      letter-spacing: 0.5px;
-      display: inline-block; 
-      text-align: center;
-      white-space: nowrap;
-    }
-
-    .nav-links a:hover {
-      color: #00ff88;
-    }
-
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 2px;
-      bottom: -5px;
-      left: 50%; 
-      transform: translateX(-50%); 
-      background: #00ff88;
-      transition: width 0.3s ease;
-    }
-
-    .nav-links a:hover::after {
-      width: 100%;
-    }
-
-    /* Mobile Menu Button */
-    .mobile-menu-btn {
-      display: none;
-      background: none;
-      border: none;
-      color: white;
-      font-size: 1.5rem;
-      cursor: pointer;
-    }
-
-    /* Menui utama */
-    .main-container {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: clamp(100px, 15vh, 120px) clamp(20px, 5vw, 40px) 0;
-      min-height: 100vh;
-    }
-
-    /* Hero Section  */
-    .hero-section {
-      text-align: center;
-      color: white;
-      padding: clamp(20px, 5vh, 40px) 0;
-      margin-bottom: clamp(40px, 8vh, 80px);
-    }
-
-    .hero-title {
-      font-size: clamp(2rem, 6vw, 4rem);
-      font-weight: 700;
-      margin-bottom: 10px;
-      line-height: 1.1;
-    }
-
-    .hero-subtitle {
-      font-size: clamp(1.5rem, 4vw, 2.5rem);
-      font-weight: 400;
-      color: #00ff88;
-      margin-bottom: clamp(20px, 4vh, 30px);
-    }
-
-    .portfolio-btn {
-      background: #00ff88;
-      color: #1a4d3a;
-      padding: clamp(12px, 2vh, 15px) clamp(25px, 4vw, 30px);
-      border: none;
-      border-radius: 25px;
-      font-size: clamp(0.9rem, 1.5vw, 1rem);
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      text-decoration: none;
-      display: inline-block;
-    }
-
-    .portfolio-btn:hover {
-      background: #00e077;
-      transform: translateY(-2px);
-      box-shadow: 0 10px 25px rgba(0, 255, 136, 0.3);
-    }
-
-    /* About Section */
-    .about-section {
-      background: rgba(0, 0, 0, 0.3);
-      border-radius: 20px;
-      padding: clamp(30px, 6vh, 60px) clamp(20px, 4vw, 60px);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      display: grid;
-      grid-template-columns: minmax(250px, 350px) 1fr;
-      gap: clamp(20px, 4vw, 40px);
-      align-items: center;
-      margin-bottom: clamp(40px, 8vh, 80px);
-      width: 100%;
-    }
-
-    .profile-image-container {
-      position: relative;
-      justify-self: center;
-      width: 100%;
-      max-width: 350px;
-    }
-
-    .profile-image {
-      width: 100%;
-      max-width: 330px;
-      aspect-ratio: 1;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 5px solid #00ff88;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-    }
-
-    .about-content {
-      color: white;
-      min-width: 0; 
-    }
-
-    .about-title {
-      font-size: clamp(1.8rem, 4vw, 2.5rem);
-      font-weight: 700;
-      margin-bottom: clamp(20px, 3vh, 30px);
-      color: white;
-    }
-
-    .about-description {
-      font-size: clamp(0.95rem, 1.5vw, 1.1rem);
-      line-height: 1.8;
-      color: rgba(255, 255, 255, 0.9);
-      text-align: justify;
-    }
-
-    /* Pengalaman */
-    .experience-container {
-      width: 100%;
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 0 clamp(20px, 5vw, 40px);
-    }
-    
-    .text-pengalaman {
-      text-align: center;
-      font-size: clamp(1.8rem, 4vw, 2.5rem);
-      margin-top: clamp(20px, 4vh, 40px);
-      color: #8efcd2;
-      letter-spacing: 0.8px;
-      margin-bottom: clamp(20px, 4vh, 40px);
-      font-weight: 600;
-    }
-
-    .experience-item {
-      background: rgba(0, 0, 0, 0.2);
-      border-radius: 20px;
-      margin-bottom: 25px;
-      width: 100%;
-      overflow: hidden;
-      transition: all 0.3s ease;
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .experience-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: clamp(20px, 3vh, 25px) clamp(20px, 4vw, 60px);
-      cursor: pointer;
-      transition: all 0.3s ease;
-      background: transparent;
-      position: relative;
-    }
-
-    .experience-header:hover {
-      background: rgba(142, 252, 210, 0.05);
-    }
-
-    .experience-header-left {
-      display: flex;
-      align-items: center;
-      gap: clamp(15px, 2vw, 20px);
-      flex: 1;
-      min-width: 0;
-    }
-
-    .experience-header svg {
-      color: #4ac298;
-     
-    }
-
-    .experience-header p {
-      color: #4ac298;
-      font-size: 25px;
-      font-weight: 500;
-      margin: 0;
-    }
-
-    .dropdown-arrow {
-      color: #4ac298;
-      font-size: 1.2rem;
-      transition: transform 0.3s ease;
-      font-weight: bold;
-      flex-shrink: 0;
-    }
-
-    .dropdown-arrow svg {
-      width: clamp(24px, 3vw, 30px);
-      height: clamp(24px, 3vw, 30px);
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .experience-item.active .experience-content {
+      max-height: 600px;
     }
 
     .experience-item.active .dropdown-arrow {
       transform: rotate(180deg);
     }
-
-    .experience-content {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.4s ease-out;
-    }
-
-    .experience-item.active .experience-content {
-      max-height: 600px;
-      transition: max-height 0.6s ease-in;
-    }
-
-    .experience-content-inner {
-      padding: clamp(20px, 4vh, 40px) clamp(20px, 4vw, 60px) clamp(30px, 5vh, 50px);
-    }
-
-    .experience-content-inner h3 {
-      color: #ffffff;
-      font-size: clamp(1.1rem, 1.8vw, 1.3rem);
-      margin-bottom: 8px;
-      font-weight: 600;
-    }
-
-    .experience-content-inner p {
-      color: #4ac298;
-      font-size: clamp(0.9rem, 1.4vw, 1rem);
-      line-height: 1.6;
-      margin-bottom: 25px;
-      text-align: left;
-    }
-
-    .experience-divider {
-      width: 100%;
-      height: 2px;
-      border: none;
-      background: #4ac298;
-      margin: 25px 0;
-      opacity: 0.7;
-    }
-
-    .experience-divider:last-child {
-      margin-bottom: 0;
-    }
-
-    /* Projek*/
-    .Projek-container {
-      width: 100%;
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 0 clamp(20px, 5vw, 40px);
-    }
-
-    .projek-text {
-      text-align: center;
-      font-size: clamp(1.8rem, 4vw, 2.5rem);
-      margin-top: clamp(60px, 8vh, 100px);
-      color: #8efcd2;
-      letter-spacing: 0.8px;
-      font-weight: 600;
-    }
-
-    .projects-showcase {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: clamp(40px, 8vh, 80px) 0;
-    }
-
-    .project-showcase-item {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: clamp(40px, 6vw, 80px);
-      margin-bottom: clamp(80px, 12vh, 120px);
-      align-items: center;
-    }
-
-    .project-showcase-item.reverse {
-      direction: rtl;
-    }
-
-    .project-showcase-item.reverse > * {
-      direction: ltr;
-    }
-
-    .project-image img {
-      width: 450;
-      height: 400px;
-    }
-
-    .project-content.garden-track {
-      background: linear-gradient(135deg, #4ac298 0%, #2d7a5c 100%);
-    }
-
-    .project-content.my-shoes {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    }
-
-    .project-content.kitty-care {
-      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-    }
-
-    .project-header {
-      text-align: center;
-      color: white;
-    }
-
-    .project-header h2 {
-      font-size: clamp(1rem, 3vw, 1.8rem);
-      font-weight: 700;
-      margin-bottom: 8px;
-      letter-spacing: 1px;
-    }
-
-    .project-header h3 {
-      font-size: clamp(0.7rem, 1.5vw, 1rem);
-      font-weight: 400;
-      margin-bottom: 15px;
-      opacity: 0.9;
-      letter-spacing: 0.5px;
-    }
-
-    .project-header p {
-      font-size: clamp(0.6rem, 1.2vw, 0.8rem);
-      line-height: 1.4;
-      margin-bottom: 20px;
-      opacity: 0.8;
-      max-width: 300px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .project-demo-btn {
-      background: rgba(255, 255, 255, 0.2);
-      color: white;
-      border: 2px solid rgba(255, 255, 255, 0.3);
-      padding: clamp(8px, 1.5vw, 12px) clamp(15px, 3vw, 25px);
-      border-radius: 25px;
-      font-size: clamp(0.6rem, 1.2vw, 0.8rem);
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      backdrop-filter: blur(10px);
-      letter-spacing: 0.5px;
-    }
-
-    .project-demo-btn:hover {
-      background: rgba(255, 255, 255, 0.3);
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    }
-
-    /* Project Info */
-    .project-info {
-      color: white;
-      padding: clamp(20px, 4vw, 40px);
-    }
-
-    .project-info h3 {
-      font-size: clamp(1.5rem, 3vw, 2rem);
-      font-weight: 700;
-      margin-bottom: 20px;
-      color: #00ff88;
-    }
-
-    .project-info p {
-      font-size: clamp(0.9rem, 1.4vw, 1.1rem);
-      line-height: 1.7;
-      color: rgba(255, 255, 255, 0.8);
-      margin-bottom: 25px;
-      text-align: justify;
-    }
-
-    .project-technologies {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 30px;
-    }
-
-    .tech-tag {
-      background: rgba(0, 255, 136, 0.2);
-      color: #00ff88;
-      padding: 8px 15px;
-      border-radius: 20px;
-      font-size: clamp(0.7rem, 1.2vw, 0.85rem);
-      font-weight: 500;
-      border: 1px solid rgba(0, 255, 136, 0.3);
-      transition: all 0.3s ease;
-    }
-
-    .tech-tag:hover {
-      background: rgba(0, 255, 136, 0.3);
-      transform: translateY(-2px);
-    }
-
-    .project-link {
-      display: inline-block;
-      background: transparent;
-      color: #00ff88;
-      border: 2px solid #00ff88;
-      padding: 12px 30px;
-      border-radius: 25px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: clamp(0.8rem, 1.3vw, 0.95rem);
-      transition: all 0.3s ease;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-    }
-
-    .project-link:hover {
-      background: #00ff88;
-      color: #1a4d3a;
-      transform: translateY(-3px);
-      box-shadow: 0 10px 25px rgba(0, 255, 136, 0.3);
-    }
-
-
-    /* Skills Section */
-    .skill-text {
-      text-align: center;
-      font-size: clamp(1.8rem, 4vw, 2.5rem);
-      margin-top: clamp(60px, 8vh, 100px);
-      margin-bottom: clamp(60px, 8vh, 100px) ;
-      color: #8efcd2;
-      letter-spacing: 0.8px;
-      font-weight: 600;
-    }
-    .skills-container {
-      width: 100%;
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 0 clamp(20px, 5vw, 40px);
-    }
-
-    .skills-title {
-      text-align: center;
-      font-size: clamp(2.5rem, 5vw, 4rem);
-      color: #ffffff;
-      font-weight: 300;
-      margin-bottom: clamp(40px, 6vh, 80px);
-      letter-spacing: 2px;
-    }
-
-    .skills-section {
-      border-radius: 30px;
-      border: 2px solid rgba(255, 255, 255, 0.1);
-      padding: clamp(30px, 4vw, 50px);
-      margin-bottom: clamp(30px, 4vh, 40px);
-      backdrop-filter: blur(10px);
-      transition: all 0.3s ease;
-    }
-    .section-title {
-      color: #00ff88;
-      font-size: clamp(1.5rem, 3vw, 2rem);
-      font-weight: 600;
-      margin-bottom: clamp(20px, 3vh, 30px);
-      display: flex;
-      align-items: center;
-      gap: 15px;
-    }
-
-    .section-title::before {
-      width: 30px;
-      height: 30px;
-      background: #00ff88;
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
-
-
-    .skills-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: clamp(15px, 2vw, 25px);
-      align-items: center;
-    }
-
-    .skill-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      color: rgba(255, 255, 255, 0.8);
-      font-size: clamp(1rem, 1.5vw, 1.2rem);
-      font-weight: 400;
-    }
-
-    .skill-checkmark {
-      width: 20px;
-      height: 20px;
-      background: #00ff88;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .skill-checkmark::after {
-      content: '✓';
-      color: #1a4d3a;
-      font-size: 12px;
-      font-weight: bold;
-    }
-
-    /* Software Skills Grid */
-    .software-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-      gap: clamp(20px, 3vw, 30px);
-      margin-top: 20px;
-      }
-
-    .software-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
-      padding: 20px;
-      border-radius: 15px;
-      transition: all 0.3s ease;
-      cursor: pointer;
-    }
-
-    .software-item:hover {
-      transform: translateY(-5px);
-      background: rgba(255, 255, 255, 0.1);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    }
-
-    .software-icon {
-      width: clamp(50px, 6vw, 70px);
-      height: clamp(50px, 6vw, 70px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 12px;
-      font-size: clamp(35px, 4vw, 45px);
-      color: white;
-    }
-
-    .software-name {
-      color: rgba(255, 255, 255, 0.7);
-      font-size: clamp(0.8rem, 1.2vw, 1rem);
-      font-weight: 500;
-      text-align: center;
-    }
-
-    /* KONTAK */
-    .text-kontak {
-      font-size: clamp(1.8rem, 4vw, 2.5rem);
-      margin-top: clamp(60px, 8vh, 100px);
-      color: #8efcd2;
-      letter-spacing: 0.8px;
-      font-weight: 600;
-      align-items: center;
-    }
-
-    .email-image {
-      display: flex;             
-      align-items: center;      
-      gap: 10px;                  
-    }
-    .email-image p{
-      margin: 0;
-      font-size: clamp(1rem, 2vw, 1rem);
-      color: #ffffff;
-      margin-top: 10px;
-      font-weight: 100;
-    }
-    
-
-    
-
-
-
-    /* RESPONSIVE DESIGM */
-    @media (max-width: 768px) {
-      .nav-links {
-        display: none;
-      }
-
-      .mobile-menu-btn {
-        display: block;
-      }
-
-      .main-container {
-        padding: 5rem 1rem 0;
-      }
-
-      .about-section {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-        padding: 2rem 1.5rem;
-        text-align: center;
-      }
-
-      .experience-container,
-      .projects-container {
-        padding: 0 1rem;
-      }
-
-      .experience-header {
-        padding: 1rem;
-        flex-direction: column;
-        gap: 1rem;
-        text-align: center;
-      }
-
-      .experience-header-left {
-        flex-direction: column;
-        gap: 1rem;
-      }
-
-      .experience-content-inner {
-        padding: 0 1rem 1.5rem 1rem;
-        text-align: center;
-      }
-
-      .project-item {
-        padding: 1.5rem;
-      }
-
-      .project-mockup {
-        height: 200px;
-      }
-
-      .hero-section {
-        padding: 2rem 0;
-        margin-bottom: 2rem;
-      }
-      .skills-section {
-        padding: 20px;
-        margin-bottom: 20px;
-      }
-
-    .software-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 15px;
-      }
-
-    .software-item {
-        padding: 15px 10px;
-      }
-
-    .skills-list {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 15px;
-      }
-  }
-    
-
-    @media (max-width: 480px) {
-      .main-container {
-        padding: 4rem 0.5rem 0;
-      }
-
-      .about-section {
-        padding: 1.5rem 1rem;
-      }
-
-      .experience-container,
-      .projects-container {
-        padding: 0 0.5rem;
-      }
-
-      .experience-header {
-        padding: 0.8rem;
-      }
-
-      .experience-content-inner {
-        padding: 0 0.8rem 1rem 0.8rem;
-      }
-
-      .project-item {
-        padding: 1rem;
-      }
-
-      .project-mockup {
-        height: 180px;
-      }
-
-      .nav-container {
-        padding: 0 1rem;
-      }
-      .software-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
-      }
-
-    .software-item {
-        padding: 12px 8px;
-     }
-
-    .skills-section {
-        padding: 15px;
-      }
-    }
-
-    /* Smooth transitions */
-    .experience-item,
-    .about-section,
-    .profile-image,
-    .experience-content-inner h3,
-    .experience-content-inner p,
-    .project-item {
-      transition: all 0.3s ease;
-    }
-     /* Animation */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .skills-section {
-            animation: fadeInUp 0.6s ease-out;
-        }
-
-        .skills-section:nth-child(2) { animation-delay: 0.1s; }
-        .skills-section:nth-child(3) { animation-delay: 0.2s; }
-        .skills-section:nth-child(4) { animation-delay: 0.3s; }
-    /* Additional animations */
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .hero-section,
-    .about-section,
-    .experience-item,
-    .project-item {
-      animation: fadeInUp 0.6s ease-out;
-    }
-
-    .about-section {
-      animation-delay: 0.2s;
-    }
-
-    .experience-item:nth-child(2) {
-      animation-delay: 0.1s;
-    }
-
-    .experience-item:nth-child(3) {
-      animation-delay: 0.2s;
-    }
-
-    .project-item:nth-child(1) {
-      animation-delay: 0.1s;
-    }
-
-    .project-item:nth-child(2) {
-      animation-delay: 0.2s;
-    }
-
-    .project-item:nth-child(3) {
-      animation-delay: 0.3s;
-    }
-</style>
-<body>
-  <!-- Navigation -->
-  <nav class="navbar">
-    <div class="nav-container">
+  </style>
+</head>
+
+<body class="font-['Poppins'] bg-[#3b5e4b] text-white bg-[radial-gradient(circle,#4ac298_0%,#3b5e4b_50%,#424644_100%)] min-h-screen">
+  
+  <nav class="fixed top-0 left-0 right-0 z-50 py-4 backdrop-blur-xl">
+    <div class="max-w-7xl mx-auto flex justify-between items-center px-5">
       <div class="text">
-        <h3>Portofolio</h3>
+        <h3 class="text-white font-medium text-xl">Portofolio</h3>
       </div>
-      <ul class="nav-links">
-        <li><a href="#about">Tentang Saya</a></li>
-        <li><a href="#experience">Pengalaman</a></li>
-        <li><a href="#projects">Projek</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#contact">Kontak</a></li>
+      <ul class="hidden md:flex items-center gap-8">
+        <li><a href="#about" class="relative font-medium text-white transition-colors hover:text-[#00ff88] after:content-[''] after:absolute after:left-1/2 after:-translate-x-1/2 after:bottom-[-5px] after:h-[2px] after:bg-[#00ff88] after:w-0 after:transition-all after:duration-300 hover:after:w-full">Tentang Saya</a></li>
+        <li><a href="#experience" class="relative font-medium text-white transition-colors hover:text-[#00ff88] after:content-[''] after:absolute after:left-1/2 after:-translate-x-1/2 after:bottom-[-5px] after:h-[2px] after:bg-[#00ff88] after:w-0 after:transition-all after:duration-300 hover:after:w-full">Pengalaman</a></li>
+        <li><a href="#projects" class="relative font-medium text-white transition-colors hover:text-[#00ff88] after:content-[''] after:absolute after:left-1/2 after:-translate-x-1/2 after:bottom-[-5px] after:h-[2px] after:bg-[#00ff88] after:w-0 after:transition-all after:duration-300 hover:after:w-full">Projek</a></li>
+        <li><a href="#skills" class="relative font-medium text-white transition-colors hover:text-[#00ff88] after:content-[''] after:absolute after:left-1/2 after:-translate-x-1/2 after:bottom-[-5px] after:h-[2px] after:bg-[#00ff88] after:w-0 after:transition-all after:duration-300 hover:after:w-full">Skills</a></li>
+        <li><a href="#contact" class="relative font-medium text-white transition-colors hover:text-[#00ff88] after:content-[''] after:absolute after:left-1/2 after:-translate-x-1/2 after:bottom-[-5px] after:h-[2px] after:bg-[#00ff88] after:w-0 after:transition-all after:duration-300 hover:after:w-full">Kontak</a></li>
       </ul>
-      <button class="mobile-menu-btn">☰</button>
+      <button class="md:hidden text-white text-2xl cursor-pointer">☰</button>
     </div>
   </nav>
 
-  <!-- Main Content -->
-  <div class="main-container" id="about">
-    <!-- Hero Section -->
-    <section class="hero-section">
-      <h1 class="hero-title">Frontend Developer</h1>
-      <h2 class="hero-subtitle">Natha Widya Putra Nugraha</h2>
-      <a href="#portfolio" class="portfolio-btn">Lihat Portofolio</a>
+  <div class="max-w-7xl mx-auto px-5 pt-28 md:pt-32 min-h-screen" id="about">
+    <section class="text-center py-10 md:py-16 mb-16">
+      <h1 class="text-4xl md:text-6xl font-bold mb-2 animate-[fadeInUp_0.6s_ease-out]">Frontend Developer</h1>
+      <h2 class="text-3xl md:text-5xl font-normal text-[#00ff88] mb-8 animate-[fadeInUp_0.6s_ease-out_0.2s]">Natha Widya Putra Nugraha</h2>
+      <a href="#projects" class="inline-block bg-[#00ff88] text-[#1a4d3a] py-3 px-8 rounded-full font-semibold transition-all duration-300 hover:bg-[#00e077] hover:-translate-y-1 shadow-lg hover:shadow-[0_10px_25px_rgba(0,255,136,0.3)] animate-[fadeInUp_0.6s_ease-out_0.4s]">Lihat Portofolio</a>
     </section>
 
-    <!-- About Section -->
-    <section class="about-section">
-      <div class="profile-image-container">
-        <img src="natha.jpg" alt="Natha Widya Putra Nugraha" class="profile-image">
+    <section class="bg-black/30 backdrop-blur-md border border-white/10 rounded-2xl p-8 md:p-12 grid grid-cols-1 md:grid-cols-[minmax(250px,_350px)_1fr] gap-8 md:gap-12 items-center mb-16 animate-[fadeInUp_0.6s_ease-out_0.2s]">
+      <div class="justify-self-center w-full max-w-[350px]">
+        <img src="natha.jpg" alt="Natha Widya Putra Nugraha" class="w-full aspect-square max-w-[330px] rounded-full object-cover border-4 border-[#00ff88] shadow-2xl mx-auto">
       </div>
-
-      <div class="about-content">
-        <h2 class="about-title">Tentang Saya</h2>
-        <p class="about-description">
+      <div class="text-white min-w-0">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6 text-center md:text-left">Tentang Saya</h2>
+        <p class="text-base md:text-lg leading-relaxed text-white/90 text-justify">
           Saya adalah mahasiswa aktif Program Studi Teknik Informatika di Universitas Komputer Indonesia, saat ini
           berada di semester 6 dengan IPK terakhir 3.41. Saya memiliki minat dan fokus dalam pengembangan front-end
           website, khususnya menggunakan teknologi berbasis PHP seperti Laravel dan CodeIgniter 4, serta styling
@@ -912,258 +59,188 @@ html {
     </section>
   </div>
 
-  <!-- Experience Section -->
-  <div class="experience-container">
-    <div class="text-pengalaman" id="experience">
+  <div class="max-w-7xl mx-auto px-5 py-16" id="experience">
+    <div class="text-center text-3xl md:text-4xl font-semibold text-[#8efcd2] tracking-wide mb-12">
       <p>Pengalaman</p>
     </div>
 
-    <!-- Education Dropdown -->
-    <div class="experience-item">
-      <div class="experience-header" onclick="toggleDropdown(this)">
-        <div class="experience-header-left">
-          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-mortarboard"
-            viewBox="0 0 16 16">
-            <path
-              d="M8.211 2.047a.5.5 0 0 0-.422 0l-7.5 3.5a.5.5 0 0 0 .025.917l7.5 3a.5.5 0 0 0 .372 0L14 7.14V13a1 1 0 0 0-1 1v2h3v-2a1 1 0 0 0-1-1V6.739l.686-.275a.5.5 0 0 0 .025-.917zM8 8.46 1.758 5.965 8 3.052l6.242 2.913z" />
-            <path
-              d="M4.176 9.032a.5.5 0 0 0-.656.327l-.5 1.7a.5.5 0 0 0 .294.605l4.5 1.8a.5.5 0 0 0 .372 0l4.5-1.8a.5.5 0 0 0 .294-.605l-.5-1.7a.5.5 0 0 0-.656-.327L8 10.466zm-.068 1.873.22-.748 3.496 1.311a.5.5 0 0 0 .352 0l3.496-1.311.22.748L8 12.46z" />
+    <div class="experience-item bg-black/20 backdrop-blur-md border border-white/10 rounded-2xl mb-6 overflow-hidden transition-all duration-500 animate-[fadeInUp_0.6s_ease-out]">
+      <div class="experience-header flex items-center justify-between p-6 cursor-pointer transition-colors hover:bg-[#8efcd2]/5" onclick="toggleDropdown(this)">
+        <div class="flex items-center gap-5">
+          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-mortarboard text-[#4ac298]" viewBox="0 0 16 16">
+            <path d="M8.211 2.047a.5.5 0 0 0-.422 0l-7.5 3.5a.5.5 0 0 0 .025.917l7.5 3a.5.5 0 0 0 .372 0L14 7.14V13a1 1 0 0 0-1 1v2h3v-2a1 1 0 0 0-1-1V6.739l.686-.275a.5.5 0 0 0 .025-.917zM8 8.46 1.758 5.965 8 3.052l6.242 2.913z" />
+            <path d="M4.176 9.032a.5.5 0 0 0-.656.327l-.5 1.7a.5.5 0 0 0 .294.605l4.5 1.8a.5.5 0 0 0 .372 0l4.5-1.8a.5.5 0 0 0 .294-.605l-.5-1.7a.5.5 0 0 0-.656-.327L8 10.466zm-.068 1.873.22-.748 3.496 1.311a.5.5 0 0 0 .352 0l3.496-1.311.22.748L8 12.46z" />
           </svg>
-          <p>Pendidikan</p>
+          <p class="text-[#4ac298] text-xl font-medium m-0">Pendidikan</p>
         </div>
-        <span class="dropdown-arrow">
-          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-chevron-down"
-            viewBox="0 0 16 16">
-            <path fill-rule="evenodd"
-              d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708" />
+        <span class="dropdown-arrow transition-transform duration-300">
+          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-chevron-down text-[#4ac298]" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708" />
           </svg>
         </span>
       </div>
-      <div class="experience-content">
-        <div class="experience-content-inner">
-          <h3>S1 - Teknik Informatika</h3>
-          <p>Universitas Komputer Indonesia, Dipati Ukur No.112-116, Lebakgede, Kecamatan Coblong, Kota Bandung, Jawa
-            Barat 40132 (2022 - Sekarang)</p>
-          <hr class="experience-divider">
-          <h3>SMA - Matematika dan IPA</h3>
-          <p>SMAN 11 Garut, Jl. Siliwangi No.2, Pakuwon, Kec. Garut Kota, Kabupaten Garut, Jawa Barat 44114 (2019 -
-            2022)</p>
+      <div class="experience-content max-h-0 overflow-hidden transition-[max-height] duration-700 ease-in-out">
+        <div class="px-8 md:px-14 pb-8 pt-4">
+          <h3 class="text-white text-lg font-semibold mb-2">S1 - Teknik Informatika</h3>
+          <p class="text-[#4ac298] text-base leading-relaxed mb-6">Universitas Komputer Indonesia, Dipati Ukur No.112-116, Lebakgede, Kecamatan Coblong, Kota Bandung, Jawa Barat 40132 (2022 - Sekarang)</p>
+          <hr class="border-t-2 border-[#4ac298]/70">
+          <h3 class="text-white text-lg font-semibold mb-2 mt-6">SMA - Matematika dan IPA</h3>
+          <p class="text-[#4ac298] text-base leading-relaxed">SMAN 11 Garut, Jl. Siliwangi No.2, Pakuwon, Kec. Garut Kota, Kabupaten Garut, Jawa Barat 44114 (2019 - 2022)</p>
         </div>
       </div>
     </div>
 
-    <!-- Internship Dropdown -->
-    <div class="experience-item">
-      <div class="experience-header" onclick="toggleDropdown(this)">
-        <div class="experience-header-left">
-          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
-            class="bi bi-pc-display-horizontal" viewBox="0 0 16 16">
-            <path
-              d="M1.5 0A1.5 1.5 0 0 0 0 1.5v7A1.5 1.5 0 0 0 1.5 10H6v1H1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1h-5v-1h4.5A1.5 1.5 0 0 0 16 8.5v-7A1.5 1.5 0 0 0 14.5 0zm0 1h13a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-7a.5.5 0 0 1 .5-.5M12 12.5a.5.5 0 1 1 1 0 .5.5 0 0 1-1 0m2 0a.5.5 0 1 1 1 0 .5.5 0 0 1-1 0M1.5 12h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1M1 14.25a.25.25 0 0 1 .25-.25h5.5a.25.25 0 1 1 0 .5h-5.5a.25.25 0 0 1-.25-.25" />
+    <div class="experience-item bg-black/20 backdrop-blur-md border border-white/10 rounded-2xl mb-6 overflow-hidden transition-all duration-500 animate-[fadeInUp_0.6s_ease-out_0.2s]">
+      <div class="experience-header flex items-center justify-between p-6 cursor-pointer transition-colors hover:bg-[#8efcd2]/5" onclick="toggleDropdown(this)">
+        <div class="flex items-center gap-5">
+          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-pc-display-horizontal text-[#4ac298]" viewBox="0 0 16 16">
+            <path d="M1.5 0A1.5 1.5 0 0 0 0 1.5v7A1.5 1.5 0 0 0 1.5 10H6v1H1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1h-5v-1h4.5A1.5 1.5 0 0 0 16 8.5v-7A1.5 1.5 0 0 0 14.5 0zm0 1h13a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-7a.5.5 0 0 1 .5-.5M12 12.5a.5.5 0 1 1 1 0 .5.5 0 0 1-1 0m2 0a.5.5 0 1 1 1 0 .5.5 0 0 1-1 0M1.5 12h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1M1 14.25a.25.25 0 0 1 .25-.25h5.5a.25.25 0 1 1 0 .5h-5.5a.25.25 0 0 1-.25-.25" />
           </svg>
-          <p>Magang</p>
+          <p class="text-[#4ac298] text-xl font-medium m-0">Magang</p>
         </div>
-        <span class="dropdown-arrow">
-          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-chevron-down"
-            viewBox="0 0 16 16">
-            <path fill-rule="evenodd"
-              d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708" />
+        <span class="dropdown-arrow transition-transform duration-300">
+          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-chevron-down text-[#4ac298]" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708" />
           </svg>
         </span>
       </div>
-      <div class="experience-content">
-        <div class="experience-content-inner">
-          <h3>PT Walden Global Services - Frontend Developer</h3>
-          <p>Mengembangkan dan memelihara antarmuka pengguna website menggunakan teknologi modern seperti HTML, CSS,
-            JavaScript, dan framework frontend. Berkolaborasi dengan tim backend untuk integrasi API dan memastikan
-            pengalaman pengguna yang optimal.</p>
+      <div class="experience-content max-h-0 overflow-hidden transition-[max-height] duration-700 ease-in-out">
+        <div class="px-8 md:px-14 pb-8 pt-4">
+          <h3 class="text-white text-lg font-semibold mb-2">PT Walden Global Services - Frontend Developer</h3>
+          <p class="text-[#4ac298] text-base leading-relaxed">Mengembangkan dan memelihara antarmuka pengguna website menggunakan teknologi modern seperti HTML, CSS, JavaScript, dan framework frontend. Berkolaborasi dengan tim backend untuk integrasi API dan memastikan pengalaman pengguna yang optimal.</p>
         </div>
       </div>
     </div>
+  </div>
 
 
-    <!-- PROJEK -->
-    <div class="Projek-container" id="projects">
-      <div class="projek-text">
-        <p>Projek</p>
-      </div>
+  <div class="max-w-7xl mx-auto px-5 py-16" id="projects">
+    <div class="text-center text-3xl md:text-4xl font-semibold text-[#8efcd2] tracking-wide mb-16">
+      <p>Projek</p>
+    </div>
 
-      <div class="projects-showcase">
-        <!-- Project 1 - Garden Track -->
-        <div class="project-showcase-item">
-          <div class="project-image">
-            <img src="./image & icon/gardentrack.png" alt="Garden Track">
-          </div>
-          <div class="project-info">
-            <h3>Garden Track</h3>
-            <p>Website untuk membuat kebun digital, diweb ini user bisa melihat pertumbuhan tanaman, mencari data
-              tanaman,berkomentar untuk interaksi antar user, dan juga ada image processing untuk deteksi jenis tanaman.
-            </p>
-            <div class="project-technologies">
-            <span class="tech-tag">PHP</span>
-            <span class="tech-tag">CodeIgniter 4</span>
-            <span class="tech-tag">Bootstrap</span>
-            <span class="tech-tag">JavaScript</span>
-            <span class="tech-tag">MySQL</span>
-          </div>         
-          </div>
+    <div class="space-y-20 md:space-y-28">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 items-center animate-[fadeInUp_0.6s_ease-out]">
+        <div class="project-image">
+          <img src="./image & icon/gardentrack.png" alt="Garden Track" class="rounded-lg  w-full">
         </div>
-
-        <!-- Project 2 - My Shoes -->
-        <div class="project-showcase-item reverse">
-          <div class="project-image">
-            <img src="./image & icon/myshoes.png" alt="MyShoes">
-          </div>
-          <div class="project-info">
-            <h3>My Shoes</h3>
-            <p>Website katalog sepatu berbasis web yang dirancang untuk memberikan pengalaman menelusuri produk yang
-              mudah bagi pengguna, serta sistem pengelolaan data produk yang efisien bagi admin. </p>
-            <div class="project-technologies">
-            <span class="tech-tag">HTML5</span>
-            <span class="tech-tag">CSS3</span>
-            <span class="tech-tag">JavaScript</span>
-            <span class="tech-tag">Responsive</span>
-            <span class="tech-tag">Animation</span>
-          </div>
-          </div>
-        </div>
-
-        <!-- Project 3 - Kitty Care -->
-        <div class="project-showcase-item">
-          <div class="project-image">
-            <img src="./image & icon/kittycare.png" alt="Kitty Care">
-          </div>
-          <div class="project-info">
-            <h3>Kitty Care</h3>
-            <p>Website untuk pemesanan online (booking) layanan penitipan kucing, grooming, dan juga untuk cek kesehatan
-              kucing. Dan juga pada admin bisa mengelola semua data layanan dan data traksaksi.</p>
-            <div class="project-technologies">
-            <span class="tech-tag">PHP</span>
-            <span class="tech-tag">CodeIgniter 4</span>
-            <span class="tech-tag">Bootstrap</span>
-            <span class="tech-tag">JavaScript</span>
-            <span class="tech-tag">MySQL</span>
-          </div>         
-          </div>
-        </div>
-
-
-        <!-- Skills Section -->
-        <div class="skill-text" id="skills">
-          <p>Skills</p>
-        </div>
-        <!-- Soft Skills Section -->
-        <div class="skills-section">
-          <h2 class="section-title">Soft Skills</h2>
-          <div class="skills-list">
-            <div class="skill-item">
-              <div class="skill-checkmark"></div>
-              <span>Team Work</span>
-            </div>
-            <div class="skill-item">
-              <div class="skill-checkmark"></div>
-              <span>Time Management</span>
-            </div>
-            <div class="skill-item">
-              <div class="skill-checkmark"></div>
-              <span>Problem Solving</span>
-            </div>
-            <div class="skill-item">
-              <div class="skill-checkmark"></div>
-              <span>Communication</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Hard Skills Section -->
-        <div class="skills-section">
-          <h2 class="section-title">Hard Skills</h2>
-          <div class="skills-list">
-            <div class="skill-item">
-              <div class="skill-checkmark"></div>
-              <span>Web Development</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Software Skills Section -->
-        <div class="skills-section">
-          <h2 class="section-title">Software Skills</h2>
-          <div class="software-grid">
-            <div class="software-item">
-              <img src="./image & icon/html.png" alt="HTML Icon" class="software-icon html">
-              <div class="software-name">HTML</div>
-            </div>
-            <div class="software-item">
-              <img src="./image & icon/css.png" alt="CSS Icon" class="software-icon css">
-              <div class="software-name">CSS</div>
-            </div>
-            <div class="software-item">
-              <img src="./image & icon/php.png" alt="PHP Icon" class="software-icon php">
-              <div class="software-name">PHP</div>
-            </div>
-            <div class="software-item">
-              <img src="./image & icon/js.png" alt="JS Icon" class="software-icon js">
-              <div class="software-name">Java Script</div>
-            </div>
-            <div class="software-item">
-              <img src="./image & icon/ci4.png" alt="CI4 Icon" class="software-icon ci4">
-              <div class="software-name">Code Igniter 4</div>
-            </div>
-            <div class="software-item">
-              <img src="./image & icon/laravel.png" alt="Laravel Icon" class="software-icon laravel">
-              <div class="software-name">Laravel</div>
-            </div>
-            <div class="software-item">
-              <img src="./image & icon/bootstrap.png" alt="Bootstrap Icon" class="software-icon bootstrap">
-              <div class="software-name">Bootstrap</div>
-            </div>
-            <div class="software-item">
-              <img src="./image & icon/tailwind.png" alt="Tailwind Icon" class="software-icon tailwind">
-              <div class="software-name">Tailwind</div>
-            </div>
-            <div class="software-item">
-              <img src="./image & icon/vscode.png" alt="VSCode Icon" class="software-icon vscode">
-              <div class="software-name">Visual Studio Code</div>
-            </div>
+        <div class="project-info">
+          <h3 class="text-3xl font-bold text-[#00ff88] mb-4">Garden Track</h3>
+          <p class="text-lg leading-relaxed text-white/80 mb-6 text-justify">Website untuk membuat kebun digital, diweb ini user bisa melihat pertumbuhan tanaman, mencari data tanaman,berkomentar untuk interaksi antar user, dan juga ada image processing untuk deteksi jenis tanaman.</p>
+          <div class="flex flex-wrap gap-3">
+            <span class="tech-tag bg-[#00ff88]/20 text-[#00ff88] text-sm font-medium px-4 py-2 rounded-full border border-[#00ff88]/30">PHP</span>
+            <span class="tech-tag bg-[#00ff88]/20 text-[#00ff88] text-sm font-medium px-4 py-2 rounded-full border border-[#00ff88]/30">CodeIgniter 4</span>
+            <span class="tech-tag bg-[#00ff88]/20 text-[#00ff88] text-sm font-medium px-4 py-2 rounded-full border border-[#00ff88]/30">Bootstrap</span>
+            <span class="tech-tag bg-[#00ff88]/20 text-[#00ff88] text-sm font-medium px-4 py-2 rounded-full border border-[#00ff88]/30">JavaScript</span>
+            <span class="tech-tag bg-[#00ff88]/20 text-[#00ff88] text-sm font-medium px-4 py-2 rounded-full border border-[#00ff88]/30">MySQL</span>
           </div>
         </div>
       </div>
 
-
-      <!-- Contact Section -->
-      <div class="kontak">
-        <div class="text-kontak" id="contact">
-          <p>Kontak</p>
-          <div class="email-image">
-            <svg xmlns="http://www.w3.org/2000/svg" width="55" height="55" fill="currentColor" class="bi bi-envelope"
-              viewBox="0 0 16 16">
-              <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2
-        7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034
-        6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0
-        2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z" />
-            </svg>
-            <p>Email :<br> nathawidya7@gmail.com</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 items-center animate-[fadeInUp_0.6s_ease-out_0.2s]">
+        <div class="project-info md:order-last">
+          <h3 class="text-3xl font-bold text-[#00ff88] mb-4">My Shoes</h3>
+          <p class="text-lg leading-relaxed text-white/80 mb-6 text-justify">Website katalog sepatu berbasis web yang dirancang untuk memberikan pengalaman menelusuri produk yang mudah bagi pengguna, serta sistem pengelolaan data produk yang efisien bagi admin.</p>
+          <div class="flex flex-wrap gap-3">
+            <span class="tech-tag bg-[#00ff88]/20 text-[#00ff88] text-sm font-medium px-4 py-2 rounded-full border border-[#00ff88]/30">HTML5</span>
+            <span class="tech-tag bg-[#00ff88]/20 text-[#00ff88] text-sm font-medium px-4 py-2 rounded-full border border-[#00ff88]/30">CSS3</span>
+            <span class="tech-tag bg-[#00ff88]/20 text-[#00ff88] text-sm font-medium px-4 py-2 rounded-full border border-[#00ff88]/30">JavaScript</span>
+            <span class="tech-tag bg-[#00ff88]/20 text-[#00ff88] text-sm font-medium px-4 py-2 rounded-full border border-[#00ff88]/30">Responsive</span>
+            <span class="tech-tag bg-[#00ff88]/20 text-[#00ff88] text-sm font-medium px-4 py-2 rounded-full border border-[#00ff88]/30">Animation</span>
           </div>
+        </div>
+        <div class="project-image">
+            <img src="./image & icon/myshoes.png" alt="MyShoes" class="rounded-lg  w-full">
         </div>
       </div>
 
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 items-center animate-[fadeInUp_0.6s_ease-out_0.4s]">
+        <div class="project-image">
+          <img src="./image & icon/kittycare.png" alt="Kitty Care" class="rounded-lg  w-full">
+        </div>
+        <div class="project-info">
+          <h3 class="text-3xl font-bold text-[#00ff88] mb-4">Kitty Care</h3>
+          <p class="text-lg leading-relaxed text-white/80 mb-6 text-justify">Website untuk pemesanan online (booking) layanan penitipan kucing, grooming, dan juga untuk cek kesehatan kucing. Dan juga pada admin bisa mengelola semua data layanan dan data traksaksi.</p>
+          <div class="flex flex-wrap gap-3">
+            <span class="tech-tag bg-[#00ff88]/20 text-[#00ff88] text-sm font-medium px-4 py-2 rounded-full border border-[#00ff88]/30">PHP</span>
+            <span class="tech-tag bg-[#00ff88]/20 text-[#00ff88] text-sm font-medium px-4 py-2 rounded-full border border-[#00ff88]/30">CodeIgniter 4</span>
+            <span class="tech-tag bg-[#00ff88]/20 text-[#00ff88] text-sm font-medium px-4 py-2 rounded-full border border-[#00ff88]/30">Bootstrap</span>
+            <span class="tech-tag bg-[#00ff88]/20 text-[#00ff88] text-sm font-medium px-4 py-2 rounded-full border border-[#00ff88]/30">JavaScript</span>
+            <span class="tech-tag bg-[#00ff88]/20 text-[#00ff88] text-sm font-medium px-4 py-2 rounded-full border border-[#00ff88]/30">MySQL</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
+  <div class="max-w-7xl mx-auto px-5 py-16" id="skills">
+    <div class="text-center text-3xl md:text-4xl font-semibold text-[#8efcd2] tracking-wide my-16">
+      <p>Skills</p>
+    </div>
+    
+    <div class="space-y-8">
+        <div class="border-2 border-white/10 rounded-3xl p-8 md:p-12 backdrop-blur-md animate-[fadeInUp_0.6s_ease-out]">
+            <h2 class="flex items-center gap-4 text-[#00ff88] text-2xl md:text-3xl font-semibold mb-6">Soft Skills</h2>
+            <div class="flex flex-wrap gap-x-8 gap-y-4">
+                <div class="flex items-center gap-3 text-lg text-white/80"><div class="w-5 h-5 bg-[#00ff88] rounded-full flex items-center justify-center text-[#1a4d3a] font-bold text-xs">✓</div><span>Team Work</span></div>
+                <div class="flex items-center gap-3 text-lg text-white/80"><div class="w-5 h-5 bg-[#00ff88] rounded-full flex items-center justify-center text-[#1a4d3a] font-bold text-xs">✓</div><span>Time Management</span></div>
+                <div class="flex items-center gap-3 text-lg text-white/80"><div class="w-5 h-5 bg-[#00ff88] rounded-full flex items-center justify-center text-[#1a4d3a] font-bold text-xs">✓</div><span>Problem Solving</span></div>
+                <div class="flex items-center gap-3 text-lg text-white/80"><div class="w-5 h-5 bg-[#00ff88] rounded-full flex items-center justify-center text-[#1a4d3a] font-bold text-xs">✓</div><span>Communication</span></div>
+            </div>
+        </div>
 
-      <script>
-        function toggleDropdown(header) {
-          const experienceItem = header.parentElement;
-          experienceItem.classList.toggle('active');
-        }
+        <div class="border-2 border-white/10 rounded-3xl p-8 md:p-12 backdrop-blur-md animate-[fadeInUp_0.6s_ease-out_0.1s]">
+            <h2 class="flex items-center gap-4 text-[#00ff88] text-2xl md:text-3xl font-semibold mb-6">Hard Skills</h2>
+            <div class="flex flex-wrap gap-x-8 gap-y-4">
+                <div class="flex items-center gap-3 text-lg text-white/80"><div class="w-5 h-5 bg-[#00ff88] rounded-full flex items-center justify-center text-[#1a4d3a] font-bold text-xs">✓</div><span>Web Development</span></div>
+            </div>
+        </div>
 
-        // Saat halaman pertama kali dimuat, buka semua dropdown
-        window.addEventListener('DOMContentLoaded', () => {
-          document.querySelectorAll('.experience-item').forEach(item => {
-            item.classList.add('active');
-          });
-        });
-      </script>
+        <div class="border-2 border-white/10 rounded-3xl p-8 md:p-12 backdrop-blur-md animate-[fadeInUp_0.6s_ease-out_0.2s]">
+            <h2 class="flex items-center gap-4 text-[#00ff88] text-2xl md:text-3xl font-semibold mb-8">Software Skills</h2>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-9 gap-6">
+                <div class="flex flex-col items-center text-center gap-3 p-4 rounded-xl transition-all hover:bg-white/10 hover:-translate-y-1"><img src="./image & icon/html.png" alt="HTML Icon" class="w-14 h-14"><div class="text-white/70 font-medium">HTML</div></div>
+                <div class="flex flex-col items-center text-center gap-3 p-4 rounded-xl transition-all hover:bg-white/10 hover:-translate-y-1"><img src="./image & icon/css.png" alt="CSS Icon" class="w-14 h-14"><div class="text-white/70 font-medium">CSS</div></div>
+                <div class="flex flex-col items-center text-center gap-3 p-4 rounded-xl transition-all hover:bg-white/10 hover:-translate-y-1"><img src="./image & icon/php.png" alt="PHP Icon" class="w-14 h-14"><div class="text-white/70 font-medium">PHP</div></div>
+                <div class="flex flex-col items-center text-center gap-3 p-4 rounded-xl transition-all hover:bg-white/10 hover:-translate-y-1"><img src="./image & icon/js.png" alt="JS Icon" class="w-14 h-14"><div class="text-white/70 font-medium">JavaScript</div></div>
+                <div class="flex flex-col items-center text-center gap-3 p-4 rounded-xl transition-all hover:bg-white/10 hover:-translate-y-1"><img src="./image & icon/ci4.png" alt="CI4 Icon" class="w-14 h-14"><div class="text-white/70 font-medium">CodeIgniter 4</div></div>
+                <div class="flex flex-col items-center text-center gap-3 p-4 rounded-xl transition-all hover:bg-white/10 hover:-translate-y-1"><img src="./image & icon/laravel.png" alt="Laravel Icon" class="w-14 h-14"><div class="text-white/70 font-medium">Laravel</div></div>
+                <div class="flex flex-col items-center text-center gap-3 p-4 rounded-xl transition-all hover:bg-white/10 hover:-translate-y-1"><img src="./image & icon/bootstrap.png" alt="Bootstrap Icon" class="w-14 h-14"><div class="text-white/70 font-medium">Bootstrap</div></div>
+                <div class="flex flex-col items-center text-center gap-3 p-4 rounded-xl transition-all hover:bg-white/10 hover:-translate-y-1"><img src="./image & icon/tailwind.png" alt="Tailwind Icon" class="w-14 h-14"><div class="text-white/70 font-medium">Tailwind</div></div>
+                <div class="flex flex-col items-center text-center gap-3 p-4 rounded-xl transition-all hover:bg-white/10 hover:-translate-y-1"><img src="./image & icon/vscode.png" alt="VSCode Icon" class="w-14 h-14"><div class="text-white/70 font-medium">VS Code</div></div>
+            </div>
+        </div>
+    </div>
+  </div>
+
+
+  <div class="max-w-7xl mx-auto px-5 py-24" id="contact">
+      <div class="flex flex-col items-center text-center">
+          <p class="text-3xl md:text-4xl font-semibold text-[#8efcd2] tracking-wide mb-8">Kontak</p>
+          <div class="flex flex-col sm:flex-row items-center gap-4">
+              <svg xmlns="http://www.w3.org/2000/svg" width="55" height="55" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+                  <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z" />
+              </svg>
+              <p class="text-lg font-light">Email :<br> <span class="font-normal">nathawidya7@gmail.com</span></p>
+          </div>
+      </div>
+  </div>
+
+
+  <script>
+    function toggleDropdown(header) {
+      const experienceItem = header.parentElement;
+      experienceItem.classList.toggle('active');
+    }
+
+    // When the page first loads, open all dropdowns
+    window.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.experience-item').forEach(item => {
+        item.classList.add('active');
+      });
+    });
+  </script>
 </body>
 
 </html>
