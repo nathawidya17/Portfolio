@@ -4,243 +4,429 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio - Natha Widya Putra Nugraha</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <title>Natha Widya | Frontend Developer</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Plus Jakarta Sans', 'sans-serif'] },
+          colors: {
+            brand: "#00ff88",
+            dark: "#0a0f0d",
+          }
+        }
+      }
+    }
+  </script>
+
   <style>
-    .experience-item.active .experience-content {
-      max-height: 600px;
+    body {
+      background-color: #0a0f0d;
+      color: #e2e8f0;
+      overflow-x: hidden;
     }
 
-    .experience-item.active .dropdown-arrow {
+    /* Frosted-glass card style used throughout the page */
+    .glass {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .text-gradient {
+      background: linear-gradient(to right, #00ff88, #60efff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Accordion animation for the "My Journey" experience list */
+    .experience-content {
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .active .experience-content {
+      max-height: 500px;
+      opacity: 1;
+      padding-top: 1.5rem;
+    }
+
+    .active .dropdown-arrow {
       transform: rotate(180deg);
+      color: #00ff88;
+    }
+
+    .active.glass {
+      border-color: rgba(0, 255, 136, 0.2);
     }
   </style>
 </head>
 
-<body class="font-['Poppins'] bg-[#3b5e4b] text-white bg-[radial-gradient(circle,#4ac298_0%,#3b5e4b_50%,#424644_100%)] min-h-screen">
-  
-  <nav class="fixed top-0 left-0 right-0 z-50 py-4 backdrop-blur-xl">
-    <div class="max-w-7xl mx-auto flex justify-between items-center px-5">
-      <div class="text">
-        <h3 class="text-white font-medium text-xl">Portofolio</h3>
-      </div>
-      <ul class="hidden md:flex items-center gap-8">
-        <li><a href="#about" class="relative font-medium text-white transition-colors hover:text-[#00ff88] after:content-[''] after:absolute after:left-1/2 after:-translate-x-1/2 after:bottom-[-5px] after:h-[2px] after:bg-[#00ff88] after:w-0 after:transition-all after:duration-300 hover:after:w-full">Tentang Saya</a></li>
-        <li><a href="#experience" class="relative font-medium text-white transition-colors hover:text-[#00ff88] after:content-[''] after:absolute after:left-1/2 after:-translate-x-1/2 after:bottom-[-5px] after:h-[2px] after:bg-[#00ff88] after:w-0 after:transition-all after:duration-300 hover:after:w-full">Pengalaman</a></li>
-        <li><a href="#projects" class="relative font-medium text-white transition-colors hover:text-[#00ff88] after:content-[''] after:absolute after:left-1/2 after:-translate-x-1/2 after:bottom-[-5px] after:h-[2px] after:bg-[#00ff88] after:w-0 after:transition-all after:duration-300 hover:after:w-full">Projek</a></li>
-        <li><a href="#skills" class="relative font-medium text-white transition-colors hover:text-[#00ff88] after:content-[''] after:absolute after:left-1/2 after:-translate-x-1/2 after:bottom-[-5px] after:h-[2px] after:bg-[#00ff88] after:w-0 after:transition-all after:duration-300 hover:after:w-full">Skills</a></li>
-        <li><a href="#contact" class="relative font-medium text-white transition-colors hover:text-[#00ff88] after:content-[''] after:absolute after:left-1/2 after:-translate-x-1/2 after:bottom-[-5px] after:h-[2px] after:bg-[#00ff88] after:w-0 after:transition-all after:duration-300 hover:after:w-full">Kontak</a></li>
+<body class="selection:bg-brand/30 selection:text-brand">
+
+  <!-- ============================== NAVBAR ============================== -->
+  <nav class="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-4xl">
+    <div class="glass rounded-full px-6 py-3 flex justify-between items-center shadow-2xl">
+      <span class="font-bold tracking-tighter text-xl">NATHA<span class="text-brand">.</span></span>
+
+      <ul class="hidden md:flex items-center gap-8 text-xs font-bold tracking-widest uppercase">
+        <li><a href="#about" class="hover:text-brand transition-colors">About</a></li>
+        <li><a href="#experience" class="hover:text-brand transition-colors">Experience</a></li>
+        <li><a href="#projects" class="hover:text-brand transition-colors">Projects</a></li>
       </ul>
-      <button class="md:hidden text-white text-2xl cursor-pointer">☰</button>
+
+      <a href="#contact" class="bg-brand text-dark px-5 py-2 rounded-full text-[10px] font-black hover:scale-105 transition-transform active:scale-95">
+        HIRE ME
+      </a>
     </div>
   </nav>
 
-  <div class="max-w-7xl mx-auto px-5 pt-28 md:pt-32 min-h-screen" id="about">
-    <section class="text-center py-10 md:py-16 mb-16">
-      <h1 class="text-4xl md:text-6xl font-bold mb-2 animate-[fadeInUp_0.6s_ease-out]">Frontend Developer</h1>
-      <h2 class="text-3xl md:text-5xl font-normal text-[#00ff88] mb-8 animate-[fadeInUp_0.6s_ease-out_0.2s]">Natha Widya Putra Nugraha</h2>
-      <a href="#projects" class="inline-block bg-[#00ff88] text-[#1a4d3a] py-3 px-8 rounded-full font-semibold transition-all duration-300 hover:bg-[#00e077] hover:-translate-y-1 shadow-lg hover:shadow-[0_10px_25px_rgba(0,255,136,0.3)] animate-[fadeInUp_0.6s_ease-out_0.4s]">Lihat Portofolio</a>
-    </section>
+  <!-- ============================== HERO / ABOUT ============================== -->
+  <main class="relative min-h-0 flex flex-col items-center pt-20 pb-8 px-5 overflow-hidden">
 
-    <section class="bg-black/30 backdrop-blur-md border border-white/10 rounded-2xl p-8 md:p-12 grid grid-cols-1 md:grid-cols-[minmax(250px,_350px)_1fr] gap-8 md:gap-12 items-center mb-16 animate-[fadeInUp_0.6s_ease-out_0.2s]">
-      <div class="justify-self-center w-full max-w-[350px]">
-        <img src="natha.jpg" alt="Natha Widya Putra Nugraha" class="w-full aspect-square max-w-[330px] rounded-full object-cover border-4 border-[#00ff88] shadow-2xl mx-auto">
-      </div>
-      <div class="text-white min-w-0">
-        <h2 class="text-3xl md:text-4xl font-bold mb-6 text-center md:text-left">Tentang Saya</h2>
-        <p class="text-base md:text-lg leading-relaxed text-white/90 text-justify">
-          Saya adalah mahasiswa aktif Program Studi Teknik Informatika di Universitas Komputer Indonesia, saat ini
-          berada di semester 6 dengan IPK terakhir 3.41. Saya memiliki minat dan fokus dalam pengembangan front-end
-          website, khususnya menggunakan teknologi berbasis PHP seperti Laravel dan CodeIgniter 4, serta styling
-          menggunakan CSS framework seperti Bootstrap dan Tailwind CSS.
-        </p>
-      </div>
-    </section>
-  </div>
-
-  <div class="max-w-7xl mx-auto px-5 py-16" id="experience">
-    <div class="text-center text-3xl md:text-4xl font-semibold text-[#8efcd2] tracking-wide mb-12">
-      <p>Pengalaman</p>
+    <!-- Background glow blobs -->
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full -z-10">
+      <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-brand/10 blur-[120px] rounded-full"></div>
+      <div class="absolute bottom-[10%] right-[-10%] w-[30%] h-[30%] bg-blue-500/10 blur-[120px] rounded-full"></div>
     </div>
 
-    <div class="experience-item bg-black/20 backdrop-blur-md border border-white/10 rounded-2xl mb-6 overflow-hidden transition-all duration-500 animate-[fadeInUp_0.6s_ease-out]">
-      <div class="experience-header flex items-center justify-between p-6 cursor-pointer transition-colors hover:bg-[#8efcd2]/5" onclick="toggleDropdown(this)">
-        <div class="flex items-center gap-5">
-          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-mortarboard text-[#4ac298]" viewBox="0 0 16 16">
-            <path d="M8.211 2.047a.5.5 0 0 0-.422 0l-7.5 3.5a.5.5 0 0 0 .025.917l7.5 3a.5.5 0 0 0 .372 0L14 7.14V13a1 1 0 0 0-1 1v2h3v-2a1 1 0 0 0-1-1V6.739l.686-.275a.5.5 0 0 0 .025-.917zM8 8.46 1.758 5.965 8 3.052l6.242 2.913z" />
-            <path d="M4.176 9.032a.5.5 0 0 0-.656.327l-.5 1.7a.5.5 0 0 0 .294.605l4.5 1.8a.5.5 0 0 0 .372 0l4.5-1.8a.5.5 0 0 0 .294-.605l-.5-1.7a.5.5 0 0 0-.656-.327L8 10.466zm-.068 1.873.22-.748 3.496 1.311a.5.5 0 0 0 .352 0l3.496-1.311.22.748L8 12.46z" />
-          </svg>
-          <p class="text-[#4ac298] text-xl font-medium m-0">Pendidikan</p>
-        </div>
-        <span class="dropdown-arrow transition-transform duration-300">
-          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-chevron-down text-[#4ac298]" viewBox="0 0 16 16">
-            <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708" />
-          </svg>
+    <div class="max-w-7xl w-full mx-auto">
+
+      <!-- Name / title -->
+      <div class="text-center mb-10 mt-10">
+        <span class="inline-block border border-brand/60 text-brand px-10 py-1 rounded-full text-[15px] font-bold mb-4 tracking-[0.2em] uppercase">
+          Natha Widya Putra Nugraha
         </span>
+        <h1 class="text-5xl md:text-8xl font-extrabold tracking-tighter leading-[1.1]">
+          <span class="text-gradient">Frontend Developer</span>
+        </h1>
       </div>
-      <div class="experience-content max-h-0 overflow-hidden transition-[max-height] duration-700 ease-in-out">
-        <div class="px-8 md:px-14 pb-8 pt-4">
-          <h3 class="text-white text-lg font-semibold mb-2">S1 - Teknik Informatika</h3>
-          <p class="text-[#4ac298] text-base leading-relaxed mb-6">Universitas Komputer Indonesia, Dipati Ukur No.112-116, Lebakgede, Kecamatan Coblong, Kota Bandung, Jawa Barat 40132 (2022 - Sekarang)</p>
-          <hr class="border-t-2 border-[#4ac298]/70">
-          <h3 class="text-white text-lg font-semibold mb-2 mt-6">SMA - Matematika dan IPA</h3>
-          <p class="text-[#4ac298] text-base leading-relaxed">SMAN 11 Garut, Jl. Siliwangi No.2, Pakuwon, Kec. Garut Kota, Kabupaten Garut, Jawa Barat 44114 (2019 - 2022)</p>
+
+      <div id="about" class="grid grid-cols-1 md:grid-cols-12 gap-5 items-stretch">
+
+        <!-- Profile photo card -->
+        <div class="md:col-span-4 glass rounded-[2.5rem] p-3 flex flex-col relative group overflow-hidden">
+          <div class="relative h-full overflow-hidden rounded-[2rem] aspect-square md:aspect-auto">
+            <img src="natha.jpg" alt="Natha" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
+            <div class="absolute inset-0 bg-gradient-to-t from-dark/80 via-transparent to-transparent opacity-60"></div>
+
+            <div class="absolute bottom-6 left-6 right-6 flex justify-between items-end">
+              <div>
+                <p class="text-[10px] font-bold text-brand uppercase tracking-widest mb-1">Status</p>
+                <p class="text-sm font-bold text-white">Active Student</p>
+              </div>
+              <div class="glass p-2 rounded-xl text-brand">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+            </div>
+          </div>
         </div>
+
+        <!-- About text card -->
+        <div class="md:col-span-8 glass rounded-[2.5rem] p-8 md:p-10 flex flex-col justify-between relative overflow-hidden">
+          <!-- Decorative background icon -->
+          <div class="absolute -top-10 -right-10 text-brand/5 rotate-12">
+            <svg width="240" height="240" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.154c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+            </svg>
+          </div>
+
+          <div class="relative z-10">
+            <h2 class="text-3xl font-bold mb-6 flex items-center gap-3">
+              <span class="w-8 h-1 bg-brand rounded-full"></span>
+              About Me
+            </h2>
+
+            <p class="text-gray-400 leading-relaxed text-lg">
+              I'm an Informatics Engineering student at <span class="text-brand font-bold">Universitas Komputer Indonesia</span> with a growing passion
+              for web development, especially front-end developer. I enjoy turning ideas into clean,
+              user-friendly interfaces and bringing designs to life with modern web technologies.
+              <br><br>
+              I'm experienced in JavaScript, TypeScript, PHP, and I actively work with frameworks like
+              Next.js, Node.js, CodeIgniter, I love exploring new tools, improving my code quality, and
+              building interfaces that not only look good but also feel great to use.
+              <br><br>
+              Right now, I'm focused on sharpening my skills, expanding my portfolio, and preparing myself for
+              opportunities in the web development industry. I'm always excited to learn, collaborate, and
+              take on new challenges that push me to grow both technically and creatively.
+            </p>
+          </div>
+
+          <!-- Quick stats -->
+          <div class="grid grid-cols-3 gap-4 mt-8 pt-8 border-t border-white/5 relative z-10">
+            <div class="hover:translate-y-[-5px] transition-transform group">
+              <p class="text-[10px] text-gray-500 uppercase tracking-widest mb-1 font-bold group-hover:text-brand transition-colors">Semester</p>
+              <p class="text-2xl font-black text-white">08<span class="text-brand text-sm">th</span></p>
+            </div>
+            <div class="hover:translate-y-[-5px] transition-transform group">
+              <p class="text-[10px] text-gray-500 uppercase tracking-widest mb-1 font-bold group-hover:text-brand transition-colors">GPA</p>
+              <p class="text-2xl font-black text-white">3.41</p>
+            </div>
+            <div class="hover:translate-y-[-5px] transition-transform group">
+              <p class="text-[10px] text-gray-500 uppercase tracking-widest mb-1 font-bold group-hover:text-brand transition-colors">Location</p>
+              <p class="text-2xl font-black text-white">BANDUNG</p>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
+  </main>
 
-    <div class="experience-item bg-black/20 backdrop-blur-md border border-white/10 rounded-2xl mb-6 overflow-hidden transition-all duration-500 animate-[fadeInUp_0.6s_ease-out_0.2s]">
-      <div class="experience-header flex items-center justify-between p-6 cursor-pointer transition-colors hover:bg-[#8efcd2]/5" onclick="toggleDropdown(this)">
-        <div class="flex items-center gap-5">
-          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-pc-display-horizontal text-[#4ac298]" viewBox="0 0 16 16">
-            <path d="M1.5 0A1.5 1.5 0 0 0 0 1.5v7A1.5 1.5 0 0 0 1.5 10H6v1H1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1h-5v-1h4.5A1.5 1.5 0 0 0 16 8.5v-7A1.5 1.5 0 0 0 14.5 0zm0 1h13a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-7a.5.5 0 0 1 .5-.5M12 12.5a.5.5 0 1 1 1 0 .5.5 0 0 1-1 0m2 0a.5.5 0 1 1 1 0 .5.5 0 0 1-1 0M1.5 12h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1M1 14.25a.25.25 0 0 1 .25-.25h5.5a.25.25 0 1 1 0 .5h-5.5a.25.25 0 0 1-.25-.25" />
+  <!-- ============================== EXPERIENCE ============================== -->
+  <section id="experience" class="max-w-7xl mx-auto px-5 py-24">
+    <div class="flex flex-col items-center mb-16">
+      <h2 class="text-4xl font-extrabold tracking-tight mb-2">My Journey</h2>
+      <div class="h-1 w-20 bg-brand rounded-full"></div>
+    </div>
+
+    <div class="w-full max-w-20xl mx-auto">
+      <!-- Expandable experience entry -->
+      <div class="experience-item active glass rounded-[2rem] overflow-hidden transition-all duration-500">
+        <div class="flex items-center justify-between p-8 cursor-pointer hover:bg-white/5" onclick="toggleDropdown(this)">
+          <div class="flex items-center gap-6">
+            <div class="w-14 h-14 rounded-2xl bg-white p-2 flex items-center justify-center shadow-lg">
+              <img src="wgs.png" alt="PT Walden Global Services Logo" class="w-full h-full object-contain">
+            </div>
+            <div>
+              <h4 class="font-bold text-xl">PT Walden Global Services</h4>
+              <p class="text-xs text-brand font-bold uppercase tracking-widest">Frontend Developer Intern</p>
+            </div>
+          </div>
+          <svg class="dropdown-arrow w-6 h-6 text-gray-500 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
           </svg>
-          <p class="text-[#4ac298] text-xl font-medium m-0">Magang</p>
         </div>
-        <span class="dropdown-arrow transition-transform duration-300">
-          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-chevron-down text-[#4ac298]" viewBox="0 0 16 16">
-            <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708" />
-          </svg>
-        </span>
-      </div>
-      <div class="experience-content max-h-0 overflow-hidden transition-[max-height] duration-700 ease-in-out">
-        <div class="px-8 md:px-14 pb-8 pt-4">
-          <h3 class="text-white text-lg font-semibold mb-2">PT Walden Global Services - Frontend Developer</h3>
-          <p class="text-[#4ac298] text-base leading-relaxed">Mengembangkan dan memelihara antarmuka pengguna website menggunakan teknologi modern seperti HTML, CSS, JavaScript, dan framework frontend. Berkolaborasi dengan tim backend untuk integrasi API dan memastikan pengalaman pengguna yang optimal.</p>
-        </div>
-      </div>
-    </div>
-  </div>
 
-
-  <div class="max-w-7xl mx-auto px-5 py-16" id="projects">
-    <div class="text-center text-3xl md:text-4xl font-semibold text-[#8efcd2] tracking-wide mb-16">
-      <p>Projek</p>
-    </div>
-
-    <div class="space-y-20 md:space-y-28">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 items-center animate-[fadeInUp_0.6s_ease-out]">
-        <div class="project-image">
-          <img src="./image & icon/gardentrack.png" alt="Garden Track" class="rounded-lg  w-full">
-        </div>
-        <div class="project-info">
-          <h3 class="text-3xl font-bold text-[#00ff88] mb-4">Garden Track</h3>
-          <p class="text-lg leading-relaxed text-white/80 mb-6 text-justify">Website untuk membuat kebun digital, diweb ini user bisa melihat pertumbuhan tanaman, mencari data tanaman,berkomentar untuk interaksi antar user, dan juga ada image processing untuk deteksi jenis tanaman.</p>
-          <div class="flex flex-wrap gap-3">
-            <span class="tech-tag bg-[#00ff88]/20 text-[#00ff88] text-sm font-medium px-4 py-2 rounded-full border border-[#00ff88]/30">PHP</span>
-            <span class="tech-tag bg-[#00ff88]/20 text-[#00ff88] text-sm font-medium px-4 py-2 rounded-full border border-[#00ff88]/30">CodeIgniter 4</span>
-            <span class="tech-tag bg-[#00ff88]/20 text-[#00ff88] text-sm font-medium px-4 py-2 rounded-full border border-[#00ff88]/30">Bootstrap</span>
-            <span class="tech-tag bg-[#00ff88]/20 text-[#00ff88] text-sm font-medium px-4 py-2 rounded-full border border-[#00ff88]/30">JavaScript</span>
-            <span class="tech-tag bg-[#00ff88]/20 text-[#00ff88] text-sm font-medium px-4 py-2 rounded-full border border-[#00ff88]/30">MySQL</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 items-center animate-[fadeInUp_0.6s_ease-out_0.2s]">
-        <div class="project-info md:order-last">
-          <h3 class="text-3xl font-bold text-[#00ff88] mb-4">My Shoes</h3>
-          <p class="text-lg leading-relaxed text-white/80 mb-6 text-justify">Website katalog sepatu berbasis web yang dirancang untuk memberikan pengalaman menelusuri produk yang mudah bagi pengguna, serta sistem pengelolaan data produk yang efisien bagi admin.</p>
-          <div class="flex flex-wrap gap-3">
-            <span class="tech-tag bg-[#00ff88]/20 text-[#00ff88] text-sm font-medium px-4 py-2 rounded-full border border-[#00ff88]/30">HTML5</span>
-            <span class="tech-tag bg-[#00ff88]/20 text-[#00ff88] text-sm font-medium px-4 py-2 rounded-full border border-[#00ff88]/30">CSS3</span>
-            <span class="tech-tag bg-[#00ff88]/20 text-[#00ff88] text-sm font-medium px-4 py-2 rounded-full border border-[#00ff88]/30">JavaScript</span>
-            <span class="tech-tag bg-[#00ff88]/20 text-[#00ff88] text-sm font-medium px-4 py-2 rounded-full border border-[#00ff88]/30">Responsive</span>
-            <span class="tech-tag bg-[#00ff88]/20 text-[#00ff88] text-sm font-medium px-4 py-2 rounded-full border border-[#00ff88]/30">Animation</span>
-          </div>
-        </div>
-        <div class="project-image">
-            <img src="./image & icon/myshoes.png" alt="MyShoes" class="rounded-lg  w-full">
-        </div>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 items-center animate-[fadeInUp_0.6s_ease-out_0.4s]">
-        <div class="project-image">
-          <img src="./image & icon/kittycare.png" alt="Kitty Care" class="rounded-lg  w-full">
-        </div>
-        <div class="project-info">
-          <h3 class="text-3xl font-bold text-[#00ff88] mb-4">Kitty Care</h3>
-          <p class="text-lg leading-relaxed text-white/80 mb-6 text-justify">Website untuk pemesanan online (booking) layanan penitipan kucing, grooming, dan juga untuk cek kesehatan kucing. Dan juga pada admin bisa mengelola semua data layanan dan data traksaksi.</p>
-          <div class="flex flex-wrap gap-3">
-            <span class="tech-tag bg-[#00ff88]/20 text-[#00ff88] text-sm font-medium px-4 py-2 rounded-full border border-[#00ff88]/30">PHP</span>
-            <span class="tech-tag bg-[#00ff88]/20 text-[#00ff88] text-sm font-medium px-4 py-2 rounded-full border border-[#00ff88]/30">CodeIgniter 4</span>
-            <span class="tech-tag bg-[#00ff88]/20 text-[#00ff88] text-sm font-medium px-4 py-2 rounded-full border border-[#00ff88]/30">Bootstrap</span>
-            <span class="tech-tag bg-[#00ff88]/20 text-[#00ff88] text-sm font-medium px-4 py-2 rounded-full border border-[#00ff88]/30">JavaScript</span>
-            <span class="tech-tag bg-[#00ff88]/20 text-[#00ff88] text-sm font-medium px-4 py-2 rounded-full border border-[#00ff88]/30">MySQL</span>
+        <div class="experience-content max-h-0 opacity-0 px-8 overflow-hidden">
+          <div class="text-gray-400 pb-8 leading-relaxed">
+            <p class="mb-2">
+              Developed an employee leave management application for internal use at WGS. As a Frontend
+              Developer Intern, my tasks included:
+            </p>
+            <ul class="space-y-1 list-disc list-inside">
+              <li>Implementing UI/UX designs into functional web pages using <span class="text-white font-medium">Next.js</span>, <span class="text-white font-medium">TypeScript</span>, and <span class="text-white font-medium">Tailwind CSS</span>.</li>
+              <li>Building reusable UI components utilizing <span class="text-white font-medium">Shadcn UI</span>.</li>
+              <li>Integrating backend APIs and fetching data using <span class="text-white font-medium">Axios</span>.</li>
+            </ul>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
-
-  <div class="max-w-7xl mx-auto px-5 py-16" id="skills">
-    <div class="text-center text-3xl md:text-4xl font-semibold text-[#8efcd2] tracking-wide my-16">
-      <p>Skills</p>
-    </div>
-    
-    <div class="space-y-8">
-        <div class="border-2 border-white/10 rounded-3xl p-8 md:p-12 backdrop-blur-md animate-[fadeInUp_0.6s_ease-out]">
-            <h2 class="flex items-center gap-4 text-[#00ff88] text-2xl md:text-3xl font-semibold mb-6">Soft Skills</h2>
-            <div class="flex flex-wrap gap-x-8 gap-y-4">
-                <div class="flex items-center gap-3 text-lg text-white/80"><div class="w-5 h-5 bg-[#00ff88] rounded-full flex items-center justify-center text-[#1a4d3a] font-bold text-xs">✓</div><span>Team Work</span></div>
-                <div class="flex items-center gap-3 text-lg text-white/80"><div class="w-5 h-5 bg-[#00ff88] rounded-full flex items-center justify-center text-[#1a4d3a] font-bold text-xs">✓</div><span>Time Management</span></div>
-                <div class="flex items-center gap-3 text-lg text-white/80"><div class="w-5 h-5 bg-[#00ff88] rounded-full flex items-center justify-center text-[#1a4d3a] font-bold text-xs">✓</div><span>Problem Solving</span></div>
-                <div class="flex items-center gap-3 text-lg text-white/80"><div class="w-5 h-5 bg-[#00ff88] rounded-full flex items-center justify-center text-[#1a4d3a] font-bold text-xs">✓</div><span>Communication</span></div>
-            </div>
-        </div>
-
-        <div class="border-2 border-white/10 rounded-3xl p-8 md:p-12 backdrop-blur-md animate-[fadeInUp_0.6s_ease-out_0.1s]">
-            <h2 class="flex items-center gap-4 text-[#00ff88] text-2xl md:text-3xl font-semibold mb-6">Hard Skills</h2>
-            <div class="flex flex-wrap gap-x-8 gap-y-4">
-                <div class="flex items-center gap-3 text-lg text-white/80"><div class="w-5 h-5 bg-[#00ff88] rounded-full flex items-center justify-center text-[#1a4d3a] font-bold text-xs">✓</div><span>Web Development</span></div>
-            </div>
-        </div>
-
-        <div class="border-2 border-white/10 rounded-3xl p-8 md:p-12 backdrop-blur-md animate-[fadeInUp_0.6s_ease-out_0.2s]">
-            <h2 class="flex items-center gap-4 text-[#00ff88] text-2xl md:text-3xl font-semibold mb-8">Software Skills</h2>
-            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-9 gap-6">
-                <div class="flex flex-col items-center text-center gap-3 p-4 rounded-xl transition-all hover:bg-white/10 hover:-translate-y-1"><img src="./image & icon/html.png" alt="HTML Icon" class="w-14 h-14"><div class="text-white/70 font-medium">HTML</div></div>
-                <div class="flex flex-col items-center text-center gap-3 p-4 rounded-xl transition-all hover:bg-white/10 hover:-translate-y-1"><img src="./image & icon/css.png" alt="CSS Icon" class="w-14 h-14"><div class="text-white/70 font-medium">CSS</div></div>
-                <div class="flex flex-col items-center text-center gap-3 p-4 rounded-xl transition-all hover:bg-white/10 hover:-translate-y-1"><img src="./image & icon/php.png" alt="PHP Icon" class="w-14 h-14"><div class="text-white/70 font-medium">PHP</div></div>
-                <div class="flex flex-col items-center text-center gap-3 p-4 rounded-xl transition-all hover:bg-white/10 hover:-translate-y-1"><img src="./image & icon/js.png" alt="JS Icon" class="w-14 h-14"><div class="text-white/70 font-medium">JavaScript</div></div>
-                <div class="flex flex-col items-center text-center gap-3 p-4 rounded-xl transition-all hover:bg-white/10 hover:-translate-y-1"><img src="./image & icon/ci4.png" alt="CI4 Icon" class="w-14 h-14"><div class="text-white/70 font-medium">CodeIgniter 4</div></div>
-                <div class="flex flex-col items-center text-center gap-3 p-4 rounded-xl transition-all hover:bg-white/10 hover:-translate-y-1"><img src="./image & icon/laravel.png" alt="Laravel Icon" class="w-14 h-14"><div class="text-white/70 font-medium">Laravel</div></div>
-                <div class="flex flex-col items-center text-center gap-3 p-4 rounded-xl transition-all hover:bg-white/10 hover:-translate-y-1"><img src="./image & icon/bootstrap.png" alt="Bootstrap Icon" class="w-14 h-14"><div class="text-white/70 font-medium">Bootstrap</div></div>
-                <div class="flex flex-col items-center text-center gap-3 p-4 rounded-xl transition-all hover:bg-white/10 hover:-translate-y-1"><img src="./image & icon/tailwind.png" alt="Tailwind Icon" class="w-14 h-14"><div class="text-white/70 font-medium">Tailwind</div></div>
-                <div class="flex flex-col items-center text-center gap-3 p-4 rounded-xl transition-all hover:bg-white/10 hover:-translate-y-1"><img src="./image & icon/vscode.png" alt="VSCode Icon" class="w-14 h-14"><div class="text-white/70 font-medium">VS Code</div></div>
-            </div>
-        </div>
-    </div>
-  </div>
-
-
-  <div class="max-w-7xl mx-auto px-5 py-24" id="contact">
-      <div class="flex flex-col items-center text-center">
-          <p class="text-3xl md:text-4xl font-semibold text-[#8efcd2] tracking-wide mb-8">Kontak</p>
-          <div class="flex flex-col sm:flex-row items-center gap-4">
-              <svg xmlns="http://www.w3.org/2000/svg" width="55" height="55" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
-                  <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z" />
-              </svg>
-              <p class="text-lg font-light">Email :<br> <span class="font-normal">nathawidya7@gmail.com</span></p>
-          </div>
+   <!-- ============================== PROJECTS ============================== -->
+  <section id="projects" class="max-w-7xl mx-auto px-5 py-24">
+    <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-4">
+      <div>
+        <h2 class="text-4xl font-extrabold tracking-tight mb-2">Project</h2>
+        <p class="text-gray-500 font-medium">Beberapa proyek yang pernah saya kerjakan.</p>
       </div>
-  </div>
+      <div class="h-[1px] flex-1 bg-white/10 hidden md:block mx-10 mb-4"></div>
+    </div>
+ 
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+ 
+      <!-- 1. Persis PPDB -->
+      <a href="https://mapersiskudang.sch.id/client/user/landingPage" class="group block cursor-pointer">
+        <div class="relative overflow-hidden rounded-[2.5rem] bg-zinc-900 mb-6 aspect-video shadow-2xl">
+          <img src="./image & icon/ppdb.png" alt="Persis PPDB" class="w-full h-full object-cover transition-opacity duration-700 opacity-100">
+          <div class="absolute inset-0 bg-gradient-to-t from-dark via-transparent to-transparent opacity-60"></div>
+          <div class="absolute bottom-4 right-6 bg-brand text-dark p-3 rounded-full opacity-0 group-hover:opacity-100 transition-opacity translate-y-4 group-hover:translate-y-0 duration-300">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </div>
+        </div>
+        <div class="px-2">
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="text-[10px] font-black tracking-widest uppercase text-white bg-white/10 px-4 py-1.5 rounded-full border border-white/20">Next.js</span>
+            <span class="text-[10px] font-black tracking-widest uppercase text-blue-400 bg-blue-400/10 px-4 py-1.5 rounded-full border border-blue-400/20">TypeScript</span>
+            <span class="text-[10px] font-black tracking-widest uppercase text-green-400 bg-green-400/10 px-4 py-1.5 rounded-full border border-green-400/20">Supabase & VPS</span>
+          </div>
+          <h3 class="text-2xl font-bold mb-3 group-hover:text-brand transition-colors">MA Persis Kudang PPDB</h3>
+          <div class="flex flex-col items-start">
+            <p class="text-gray-500 line-clamp-3 leading-relaxed transition-all duration-300">
+              A full-stack web application designed for online student enrollment and re-registration. I
+              developed this entirely independently, handling everything from UI/UX design to VPS
+              deployment. Features include data entry, payment proof uploads stored via Supabase, admin
+              approval workflows, and an NISN-based billing system. Built with Next.js, TypeScript, Tailwind
+              CSS, Shadcn UI, and Axios for robust API integration.
+            </p>
+            <button onclick="event.preventDefault(); toggleReadMore(this)" class="text-xs text-brand mt-2 font-bold uppercase tracking-widest hover:text-white transition-colors">
+              Read more &darr;
+            </button>
+          </div>
+        </div>
+      </a>
+ 
+      <!-- 2. CustomApp 3D Furniture -->
+      <a href="https://custom-furniture-apps.vercel.app/landingpage.html" class="group block cursor-pointer">
+        <div class="relative overflow-hidden rounded-[2.5rem] bg-zinc-900 mb-6 aspect-video shadow-2xl">
+          <img src="./image & icon/custom.png" alt="CustomApp Furniture" class="w-full h-full object-cover transition-opacity duration-700 opacity-100">
+          <div class="absolute inset-0 bg-gradient-to-t from-dark via-transparent to-transparent opacity-60"></div>
+          <div class="absolute bottom-4 right-6 bg-brand text-dark p-3 rounded-full opacity-0 group-hover:opacity-100 transition-opacity translate-y-4 group-hover:translate-y-0 duration-300">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </div>
+        </div>
+        <div class="px-2">
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="text-[10px] font-black tracking-widest uppercase text-yellow-400 bg-yellow-400/10 px-4 py-1.5 rounded-full border border-yellow-400/20">Three.js</span>
+            <span class="text-[10px] font-black tracking-widest uppercase text-orange-400 bg-orange-400/10 px-4 py-1.5 rounded-full border border-orange-400/20">Blender</span>
+            <span class="text-[10px] font-black tracking-widest uppercase text-green-500 bg-green-500/10 px-4 py-1.5 rounded-full border border-green-500/20">Node.js</span>
+          </div>
+          <h3 class="text-2xl font-bold mb-3 group-hover:text-brand transition-colors">3D Furniture Customizer</h3>
+          <div class="flex flex-col items-start">
+            <p class="text-gray-500 line-clamp-3 leading-relaxed transition-all duration-300">
+              An interactive 3D web application built for Debbi Meubel Garut that allows users to customize
+              furniture products in real-time. I handled the entire development process, including creating
+              3D models in Blender and rendering them using Three.js. Users can modify dimensions, manage
+              shelf configurations (empty, pull-out, or dividers), place hangers, and adjust door mechanisms
+              (left, right, or pull). The client-side utilizes HTML, CSS, JavaScript, and Tailwind, while the
+              server runs on Node.js and Express.
+            </p>
+            <button onclick="event.preventDefault(); toggleReadMore(this)" class="text-xs text-brand mt-2 font-bold uppercase tracking-widest hover:text-white transition-colors">
+              Read more &darr;
+            </button>
+          </div>
+        </div>
+      </a>
+ 
+      <!-- 3. WGS Leave Management -->
+      <div class="group cursor-default">
+        <div class="relative overflow-hidden rounded-[2.5rem] bg-zinc-900 mb-6 aspect-video shadow-2xl">
+          <img src="./image & icon/leaveapps.png" alt="WGS Leave Management" class="w-full h-full object-cover transition-opacity duration-700 opacity-100">
+          <div class="absolute inset-0 bg-gradient-to-t from-dark via-transparent to-transparent opacity-60"></div>
+        </div>
+        <div class="px-2">
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="text-[10px] font-black tracking-widest uppercase text-white bg-white/10 px-4 py-1.5 rounded-full border border-white/20">Next.js</span>
+            <span class="text-[10px] font-black tracking-widest uppercase text-teal-400 bg-teal-400/10 px-4 py-1.5 rounded-full border border-teal-400/20">Tailwind CSS</span>
+          </div>
+          <h3 class="text-2xl font-bold mb-3 group-hover:text-brand transition-colors">WGS Internal Leave System</h3>
+          <div class="flex flex-col items-start">
+            <p class="text-gray-500 line-clamp-3 leading-relaxed transition-all duration-300">
+              An internal leave management system designed to digitize requests and significantly reduce HR
+              workload. Developed as part of a team, I worked primarily as a Frontend Developer. My
+              responsibilities included translating UI/UX designs into responsive web pages and integrating
+              backend endpoints using Axios for data fetching. The user interface was built using Next.js,
+              TypeScript, Tailwind CSS, and Shadcn UI for highly reusable components.
+            </p>
+            <button onclick="toggleReadMore(this)" class="text-xs text-brand mt-2 font-bold uppercase tracking-widest hover:text-white transition-colors">
+              Read more &darr;
+            </button>
+          </div>
+        </div>
+      </div>
+ 
+      <!-- 4. Garden Track Digital -->
+      <div class="group cursor-default">
+        <div class="relative overflow-hidden rounded-[2.5rem] bg-zinc-900 mb-6 aspect-video shadow-2xl">
+          <img src="./image & icon/gardentrack.png" alt="Garden Track" class="w-full h-full object-cover transition-opacity duration-700 opacity-100">
+          <div class="absolute inset-0 bg-gradient-to-t from-dark via-transparent to-transparent opacity-60"></div>
+        </div>
+        <div class="px-2">
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="text-[10px] font-black tracking-widest uppercase text-brand bg-brand/10 px-4 py-1.5 rounded-full border border-brand/20">CI4</span>
+            <span class="text-[10px] font-black tracking-widest uppercase text-blue-500 bg-blue-500/10 px-4 py-1.5 rounded-full border border-blue-500/20">Python</span>
+            <span class="text-[10px] font-black tracking-widest uppercase text-purple-400 bg-purple-400/10 px-4 py-1.5 rounded-full border border-purple-400/20">Bootstrap</span>
+          </div>
+          <h3 class="text-2xl font-bold mb-3 group-hover:text-brand transition-colors">Garden Track Digital</h3>
+          <div class="flex flex-col items-start">
+            <p class="text-gray-500 line-clamp-3 leading-relaxed transition-all duration-300">
+              An independent project featuring a plant monitoring system designed to carefully track plant
+              growth. It includes an integrated image processing feature for accurate plant species
+              detection. To achieve this, I trained a custom detection model using Python before integrating
+              it into the main system. The primary web platform was built from scratch using CodeIgniter 4
+              (CI4) and Bootstrap for the interface design.
+            </p>
+            <button onclick="toggleReadMore(this)" class="text-xs text-brand mt-2 font-bold uppercase tracking-widest hover:text-white transition-colors">
+              Read more &darr;
+            </button>
+          </div>
+        </div>
+      </div>
+ 
+    </div>
+  </section>
+ 
 
+  <!-- ============================== SKILLS (currently disabled) ==============================
+  <section id="skills" class="max-w-6xl mx-auto px-5 py-24">
+    <div class="glass rounded-[3.5rem] p-12 md:p-20 text-center relative overflow-hidden">
+      <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-brand to-transparent opacity-30"></div>
+      <h2 class="text-3xl font-extrabold mb-16 tracking-tight">Tech Stack & Tools</h2>
+      <div class="flex flex-wrap justify-center gap-10 md:gap-16">
+        <div class="group flex flex-col items-center gap-4 transition-all hover:-translate-y-3">
+          <div class="w-20 h-20 glass rounded-3xl flex items-center justify-center group-hover:border-brand transition-colors">
+            <img src="./image & icon/js.png" class="w-10 h-10 grayscale group-hover:grayscale-0 transition-all duration-500" alt="JS">
+          </div>
+          <span class="text-[10px] font-black tracking-[0.2em] text-gray-500 group-hover:text-white transition-colors">JAVASCRIPT</span>
+        </div>
+        <div class="group flex flex-col items-center gap-4 transition-all hover:-translate-y-3">
+          <div class="w-20 h-20 glass rounded-3xl flex items-center justify-center group-hover:border-brand transition-colors">
+            <img src="./image & icon/tailwind.png" class="w-10 h-10 grayscale group-hover:grayscale-0 transition-all duration-500" alt="Tailwind">
+          </div>
+          <span class="text-[10px] font-black tracking-[0.2em] text-gray-500 group-hover:text-white transition-colors">TAILWIND</span>
+        </div>
+        <div class="group flex flex-col items-center gap-4 transition-all hover:-translate-y-3">
+          <div class="w-20 h-20 glass rounded-3xl flex items-center justify-center group-hover:border-brand transition-colors">
+            <img src="./image & icon/laravel.png" class="w-10 h-10 grayscale group-hover:grayscale-0 transition-all duration-500" alt="Laravel">
+          </div>
+          <span class="text-[10px] font-black tracking-[0.2em] text-gray-500 group-hover:text-white transition-colors">LARAVEL</span>
+        </div>
+      </div>
+    </div>
+  </section>
+  ============================================================================================ -->
+
+  <!-- ============================== CONTACT / FOOTER ============================== -->
+  <footer id="contact" class="px-5 py-32 text-center bg-[radial-gradient(circle_at_bottom,rgba(0,255,136,0.05)_0%,transparent_70%)]">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-4xl md:text-6xl font-extrabold mb-10 tracking-tighter leading-tight">
+        Ready to bring <br>ideas to <span class="text-brand">life?</span>
+      </h2>
+
+      <a href="mailto:nathawidya7@gmail.com" class="inline-flex items-center gap-4 text-xl md:text-2xl font-bold glass px-10 py-5 rounded-full hover:bg-white/5 transition-all group">
+        nathawidya7@gmail.com
+        <svg class="w-6 h-6 group-hover:translate-x-2 transition-transform text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+        </svg>
+      </a>
+
+      <div class="mt-24 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-gray-600 text-[10px] font-bold tracking-widest uppercase">
+        <div>© 2026 Natha Widya Putra Nugraha</div>
+        <div class="flex gap-6">
+          <a href="https://github.com/nathawidya17" class="hover:text-brand transition-colors">Github</a>
+          <a href="https://www.linkedin.com/in/natha-widya-putra-nugraha-9927412b0/" class="hover:text-brand transition-colors">LinkedIn</a>
+          <a href="https://www.instagram.com/nathawidya_/" class="hover:text-brand transition-colors">Instagram</a>
+        </div>
+      </div>
+    </div>
+  </footer>
 
   <script>
+    // Expands/collapses an experience entry in the "My Journey" accordion.
     function toggleDropdown(header) {
-      const experienceItem = header.parentElement;
-      experienceItem.classList.toggle('active');
+      const item = header.closest('.experience-item');
+      item.classList.toggle('active');
     }
 
-    // When the page first loads, open all dropdowns
-    window.addEventListener('DOMContentLoaded', () => {
-      document.querySelectorAll('.experience-item').forEach(item => {
-        item.classList.add('active');
-      });
-    });
+    // Expands/collapses a project description and updates the button label.
+    function toggleReadMore(button) {
+      const description = button.previousElementSibling;
+      description.classList.toggle('line-clamp-3');
+      button.innerHTML = description.classList.contains('line-clamp-3')
+        ? 'Read more &darr;'
+        : 'Read less &uarr;';
+    }
   </script>
-</body>
 
+</body>
 </html>
